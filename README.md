@@ -1,2 +1,3 @@
-# baikeresult
-中间件，接收关键字请求，返回本地或者百度百科的词条内容
+# JavaScript-notes
+
+javascript学习笔记
