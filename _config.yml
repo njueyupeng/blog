@@ -6,16 +6,15 @@
 title: 于鹏的博客，前端博客，前端技术博客 # your blog title name
 subtitle:  于鹏的个人博客，记录个人的技术成长
 author: 于鹏 # 作者
-description: #网站描述
+description: 于鹏的个人博客，记录个人的技术成长
 language: 
 timezone: 
 
 # custom Site settings
 # more detail check out docs
-SEOTitle: 于鹏,前端,技术成长,前端技术博客,程序员 
+SEOTitle: 于鹏的博客,前端,技术成长,前端技术博客 
 header-img: http://otja7p1i5.bkt.clouddn.com/18-1-18/7267351.jpg
 email: 455440341@qq.com
-description: 于鹏的个人博客，记录个人的技术成长
 keyword: 于鹏,前端,技术成长,前端技术博客,程序员 # seo key words
 
 favicon: # your favicon png
