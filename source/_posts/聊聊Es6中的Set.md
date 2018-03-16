@@ -140,6 +140,36 @@ Set 结构的实例有四个遍历的方法：
 
 >> Set 的遍历顺序就是插入的顺序。
 
+####  keys(), values(), entries()
 
+由于Set结构没有键名，只有键值（或者说键名和键值是同一个值），所以 keys 方法和 values 方法 的行为完全一致。
+
+```javascript
+let set = new Set(['red','green','blue']);
+
+for(let item of set.keys()){
+    console.log(item);
+}
+// red
+// green
+// blue
+
+for(let item of set.values()){
+    console.log(item);
+}
+// red
+// green
+// blue
+
+for(let item of set.entries()){
+    console.log(items;
+}
+// ["red","red"]
+// ["green","green"]
+// ["blue","blue"]
+```
+
+
+Set结构的实例默认可遍历，它的默认遍历器
 
 
