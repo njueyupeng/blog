@@ -126,7 +126,8 @@ markdown:
     - markdown-it-emoji
 
 ## Themes: https://hexo.io/themes/
-theme: snippet
+# theme: snippet
+theme: Anisina
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
