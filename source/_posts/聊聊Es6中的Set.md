@@ -74,6 +74,72 @@ set.size;//2
 上面代码表示，两个空对象不相等，它们被视为两个值。
 
 
-
 ## Set实例的属性和方法
+
+Set结构是实例有以下属性：
+
+- Set.prototype.constructor: 构造函数,默认就是 Set 函数
+
+- Set.prorotype.size: 返回 Set 实例的成员总数
+
+Set实例的方法分为两大类方法：操作方法（用于操作数据）和 遍历方法（用于遍历成员）。
+
+四个操作方法：
+
+    - add(value): 添加某个值，返回 Set 结构本身。
+    - delete(value): 删除某个值，返回一个布尔值，表示删除是否成功(删除不存在的值，返回false)。
+    - has(value): 返回一个布尔值，表示该值是否为 Set 的成员。
+    - clear():清除所有成员，没有返回值。
+
+
+在判断是否包含一个键上面，Object结构和Set结构的写法是不一样的。
+
+```javascript
+//对象的写法
+const onject = {
+    'width':1,
+    'height':1
+};
+if(object[comeName]){
+    // do something
+}
+
+//Set 的写法
+const s = new Set();
+
+s.add('width');
+s.add('height');
+if(s.has(someName)){
+    //do something
+}
+```
+
+Array.from 方法可以将Set结构转换为数组。
+
+```javascript
+const items = new Set([1,2,3,4,5]);
+const array = Array(items);
+```
+
+一种去除数组重复成员的另外一种方法：
+```javascript
+function dedupe(array){
+    return Array.from(new Set(array));
+}
+```
+
+
+### 遍历操作
+
+Set 结构的实例有四个遍历的方法：
+
+    - keys(): 返回键名的遍历器
+    - values(): 返回键值的遍历器
+    - entries(): 返回键值对的遍历器
+    - forEach(): 使用回调函数遍历每个成员
+
+>> Set 的遍历顺序就是插入的顺序。
+
+
+
 
