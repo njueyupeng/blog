@@ -180,7 +180,7 @@ links:
 # 主题自定义个性化配置
 
 ## 网站宣传语{@branding：网站宣传语(不设置显示本地图片)}
-branding: 从未如此简单有趣
+branding: 于鹏的个人主页
 
 ## 设置banner背景图片
 banner:
