@@ -7,7 +7,7 @@ title: 于鹏的博客，前端博客，前端技术博客 # your blog title nam
 subtitle:  于鹏的个人博客，记录个人的技术成长
 author: 于鹏 # 作者
 description: 于鹏的个人博客，记录个人的技术成长
-language: 
+language:  zh-CN
 timezone: 
 
 # custom Site settings
@@ -50,6 +50,15 @@ duoshuo_share: true                     # set to false if you want to use Commen
 
 # Use livere
 use_livere:
+
+menu:
+  Home: .
+  Archives: archives
+  Categories: categories
+  Tags: tags
+  About: about
+  GitHub: https://github.com/njueyupeng
+
 
 # Analytics settings
 # Baidu Analytics
@@ -126,7 +135,8 @@ markdown:
     - markdown-it-emoji
 
 ## Themes: https://hexo.io/themes/
-theme: snippet
+theme: icarus
+# theme: snippet
 # theme: Anisina
 
 # Deployment
