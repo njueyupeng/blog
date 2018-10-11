@@ -4,14 +4,14 @@
     <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<%= config.description %>">
-    <meta name="keyword"  content="<%= config.keyword %>">
+    <meta name="keyword" content="<%= config.keyword %>">
     <link rel="shortcut icon" href="<%= config.root %>img/favicon.ico">
 
     <title>
         <% if (page.title) { %>
-          <%= page.title + ' - ' + config.SEOTitle %>
+        <%= page.title + ' - ' + config.SEOTitle %>
         <% } else{%>
-          <%= config.SEOTitle %>
+        <%= config.SEOTitle %>
         <% } %>
     </title>
 
@@ -48,4 +48,14 @@
 
     <!-- ga & ba script hoook -->
     <script></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?6b668b47c6b4627b27fc1e79bef13ed2";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
 </head>
