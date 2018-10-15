@@ -3,9 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Yupeng's Blog
-subtitle: To Be A Lean Developer!
+title: 于鹏的博客
+subtitle: 勿在浮沙筑高台
 author: 于鹏
+description: 于鹏的个人博客，记录个人的技术成长,技术积累
 language:
 timezone:
 
@@ -19,12 +20,10 @@ permalink_defaults:
 #Custom Setting Start
 
 # Site settings
-SEOTitle: 于鹏的博客 | Yupeng's Blog
+SEOTitle: 于鹏的博客,前端,技术成长,前端技术博客
 header-img: img/home-bg.jpg
-email: njueyupeng@qq.com
-description: "于鹏的前端博客，技术积累"
-keyword: "于鹏，前端博客"
-
+email: 1196194875@qq.com
+keyword: 于鹏,前端,技术成长,前端技术博客,程序员
 
 # SNS settings
 # RSS: false
