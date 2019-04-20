@@ -7,7 +7,7 @@ title: 于鹏的博客
 subtitle: 勿在浮沙筑高台
 author: 于鹏
 description: 于鹏的个人博客，记录个人的技术成长,技术积累
-language:
+language: zh-Hans
 timezone:
 
 # URL
@@ -140,7 +140,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: huxblog
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
