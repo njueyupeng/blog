@@ -614,8 +614,8 @@ disqusjs:
 # Changyan
 changyan:
   enable: false
-  appid:
-  appkey:
+  appid: cyuc0wNLg
+  appkey: prod_a08a9e693ab8a38e3b5860023b95404f
 
 # Valine
 # You can get your appid and appkey from https://leancloud.cn
