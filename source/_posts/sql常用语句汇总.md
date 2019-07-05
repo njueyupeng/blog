@@ -2,7 +2,8 @@
 title: sql-常用语句汇总
 date: 2019-05-23 19:24:41
 tags: sql
-categories: 数据库
+categories:
+  - 数据库
 ---
 
 **简介：**本文列举常用 sql 语句方便后续学习和回顾

@@ -4,6 +4,7 @@ date: 2019-05-13 17:25:07
 tags:
 categories:
   - 前端
+  - JavaScript
 ---
 
 **简介：**本文介绍 js 的错误处理方式以及 try{...}catch(e){...}finally{...}的使用方法。
