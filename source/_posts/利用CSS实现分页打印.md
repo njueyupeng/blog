@@ -6,7 +6,6 @@ tags:
   - CSS
 categories:
   - CSS
-  - 前端
 ---
 
 最近碰到一个需求，需要前端将在一个页面内调用浏览器的 window.print()方法，打印当前页面。但是呢，需要将三个 DIV 分页打印：

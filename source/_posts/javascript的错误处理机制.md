@@ -3,7 +3,6 @@ title: javascript的错误处理机制
 date: 2019-05-13 17:25:07
 tags:
 categories:
-  - 前端
   - JavaScript
 ---
 

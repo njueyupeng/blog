@@ -7,7 +7,6 @@ tags:
   - 前端开发
   - JavaScript
 categories:
-  - 前端
   - JavaScript
 ---
 
