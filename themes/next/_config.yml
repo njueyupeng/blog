@@ -613,7 +613,7 @@ disqusjs:
 
 # Changyan
 changyan:
-  enable: true
+  enable: false
   appid: cyupjbQ7A
   appkey: 87f2e2277dbb7a8a0823a4f14181992c
 
@@ -621,9 +621,9 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # More info available at https://valine.js.org
 valine:
-  enable: false # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
-  appid: # your leancloud application appid
-  appkey: # your leancloud application appkey
+  enable: true # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
+  appid: sSTLR14UGdxsDkgqtSsuYAph-gzGzoHsz # your leancloud application appid
+  appkey: DNu29crmBynfoAcBgc07DlaW # your leancloud application appkey
   notify: false # mail notifier, See: https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: Just go go # comment box placeholder
