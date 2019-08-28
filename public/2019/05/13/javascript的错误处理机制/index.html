@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="How2JS.cn">
 <meta property="og:description" content="简介：本文介绍 js 的错误处理方式以及 try{…}catch(e){…}finally{…}的使用方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-13T09:57:14.508Z">
+<meta property="og:updated_time" content="2019-07-15T08:41:48.058Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript的错误处理机制">
 <meta name="twitter:description" content="简介：本文介绍 js 的错误处理方式以及 try{…}catch(e){…}finally{…}的使用方法。">
@@ -189,7 +189,7 @@
     </div>
     
       
-        <p class="site-subtitle">闻道有先后，术业有专攻</p>
+        <p class="site-subtitle">于鹏的博客</p>
       
     
     
@@ -355,7 +355,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="于鹏"/>
-      <meta itemprop="description" content="闻道有先后，术业有专攻"/>
+      <meta itemprop="description" content="知道(学习),做到(实践),悟道(总结),传道(分享)"/>
       <meta itemprop="image" content="/img/avatar.jpg"/>
     </span>
 
@@ -394,12 +394,24 @@
                 
               
 
-              <time title="创建时间：2019-05-13 17:25:07 / 修改时间：17:57:14" itemprop="dateCreated datePublished" datetime="2019-05-13T17:25:07+08:00">2019-05-13</time>
+              <time title="创建时间：2019-05-13 17:25:07" itemprop="dateCreated datePublished" datetime="2019-05-13T17:25:07+08:00">2019-05-13</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-15 16:41:48" itemprop="dateModified" datetime="2019-07-15T16:41:48+08:00">2019-07-15</time>
               
             
           </span>
@@ -416,7 +428,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a></span>
 
                 
                 
@@ -426,6 +438,20 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+              
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/05/13/javascript的错误处理机制/#SOHUCS" itemprop="discussionUrl">
+                  <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2019/05/13/javascript的错误处理机制/" itemprop="commentCount"></span>
+                </a>
+              
             
           
 
@@ -484,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/07/什么是Cookie隔离/" rel="next" title="什么是 Cookie 隔离？">
-                <i class="fa fa-chevron-left"></i> 什么是 Cookie 隔离？
+              <a href="/2019/04/07/最小动画时间间隔/" rel="next" title="最小动画时间间隔">
+                <i class="fa fa-chevron-left"></i> 最小动画时间间隔
               </a>
             
           </div>
@@ -519,7 +545,8 @@
           
 
   
-    <div class="comments" id="gitalk-container">
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
     </div>
 
   
@@ -563,7 +590,7 @@
                 alt="于鹏"/>
             
               <p class="site-author-name" itemprop="name">于鹏</p>
-              <div class="site-description motion-element" itemprop="description">闻道有先后，术业有专攻</div>
+              <div class="site-description motion-element" itemprop="description">知道(学习),做到(实践),悟道(总结),传道(分享)</div>
           </div>
 
           
@@ -573,7 +600,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -596,7 +623,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -625,7 +662,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
@@ -842,36 +881,25 @@
   
 
   
-
-
   
-    
+  <script>
+  (function() {
+    var appid = 'cyupjbQ7A';
+    var conf = '87f2e2277dbb7a8a0823a4f14181992c';
+    var width = window.innerWidth || document.documentElement.clientWidth;
+    if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>');
+    }
+    else {
+      var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});
+    }
+  })();
+  </script>
+  <script src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
 
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 
 
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css"/>
-
-
-
-<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
-
-<script>
-  var gitalk = new Gitalk({
-    clientID: 'af2e0216058588243779',
-    clientSecret: '0bf419d4b62345ff23a9f4f4b8e9e70a7bf64cf2',
-    repo: 'blog-comment',
-    owner: 'njueyupeng',
-    admin: ['njueyupeng'],
-    id: md5(location.pathname),
-    
-      language: window.navigator.language || window.navigator.userLanguage,
-    
-    distractionFreeMode: 'true'
-  });
-  gitalk.render('gitalk-container');
-</script>
 
   
 
