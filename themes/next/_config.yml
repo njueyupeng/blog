@@ -613,9 +613,9 @@ disqusjs:
 
 # Changyan
 changyan:
-  enable: false
-  appid: cyuc0wNLg
-  appkey: prod_a08a9e693ab8a38e3b5860023b95404f
+  enable: true
+  appid: cyupjbQ7A
+  appkey: 87f2e2277dbb7a8a0823a4f14181992c
 
 # Valine
 # You can get your appid and appkey from https://leancloud.cn
@@ -657,7 +657,7 @@ gitment:
 # Gitalk
 # Demo: https://gitalk.github.io
 gitalk:
-  enable: true
+  enable: false
   github_id: njueyupeng # Github repo owner
   repo: blog-comment # Repository name to store issues
   client_id: af2e0216058588243779 # Github Application Client ID
