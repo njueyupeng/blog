@@ -1833,7 +1833,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9dd1fe;
+  background: #37ffc4;
 }
 .feed-link,
 .chat {
@@ -2773,4 +2773,7 @@ hr {
     width: auto;
     text-align: center;
   }
+}
+div.info {
+  display: none;
 }
