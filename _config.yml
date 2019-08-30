@@ -3,78 +3,102 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 于鹏的博客，前端博客，前端技术博客 # your blog title name
-subtitle:  于鹏的个人博客，记录个人的技术成长
-author: 于鹏 # 作者
-description: 于鹏的个人博客，记录个人的技术成长
-language: 
-timezone: 
-
-# custom Site settings
-# more detail check out docs
-SEOTitle: 于鹏的博客,前端,技术成长,前端技术博客 
-header-img: http://otja7p1i5.bkt.clouddn.com/18-1-18/7267351.jpg
-email: 455440341@qq.com
-keyword: 于鹏,前端,技术成长,前端技术博客,程序员 # seo key words
-
-favicon: # your favicon png
-# custom end
+title: How2JS.cn
+subtitle: 于鹏的博客
+author: 于鹏
+description: 知道(学习),做到(实践),悟道(总结),传道(分享)
+language: zh-CN
+timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://www.how2js.cn
-root: /
+# url: http://kaijun.rocks/hexo-theme-huxblog
+# root: /yupeng-blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
+#Custom Setting Start
+
+# Site settings
+SEOTitle: 于鹏的博客_前端博客_前端技术博客_优秀前端博客
+header-img: img/home-bg.jpg
+email: 1196194875@qq.com
+keyword: 于鹏_前端_技术成长_前端技术博客_程序员博客_优秀前端博客
+
 # SNS settings
-# RSS:
-weibo_username: 天上掉下昵称
-zhihu_username: yu-peng-43-42
-github_username: njueyupeng
-twitter_username: 
-facebook_username:  
-linkedin_username:  
+# RSS: false
+weibo_username:     天上掉下昵称
+zhihu_username:     yu-peng-43-42
+github_username:    njueyupeng
+# twitter_username:   Demonbane_x
+facebook_username:  yupeng
+# linkedin_username:  kaijun-chen-42089354
 
 # Build settings
-anchorjs: false                        # if you want to customize anchor. check out line:181 of `post.html`
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
 
-# Disqus settings 
-disqus_username: 
+# Disqus settings
+# disqus_username: hexo-theme-huxblog
 
 # Duoshuo settings
-duoshuo_username:  # 你的多说帐号
+# duoshuo_username: kaijun
 # Share component is depend on Comment so we can NOT use share only.
-duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+# duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
-# Use livere
-use_livere:
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id:
+# ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
 # Google Analytics
-ga_track_id:             # Format: UA-xxxxxx-xx
-ga_domain:
+# ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
+# ga_domain: huangxuan.me
+
 
 # Sidebar settings
-sidebar-about-description: # 个人描述
-sidebar-avatar:     # use absolute URL
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "我为代码注入灵魂!"
+sidebar-avatar: img/avatar.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 # Featured Tags
 featured-tags: true                     # whether or not using Feature-Tags
 featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
 
-# friends
-friends:  # 友链
+
+# Friends
+friends: [
+    # {
+    #     title: "Kaijun's Blog", 
+    #     href: "http://blog.kaijun.rocks"
+    # },{
+    #     title: "Hux Blog",
+    #     href: "http://huangxuan.me"
+    # },{
+    #     title: "Foo",
+    #     href: "#"
+    # },{
+    #     title: "Bar",
+    #     href: "#"
+    # },{
+    #     title: "Example Friends",
+    #     href: "#"
+    # },{
+    #     title: "It helps SEO",
+    #     href: "#"
+    # }
+]
+
+
+#Custom Setting End
+
+
 
 # Directory
 source_dir: source
 public_dir: public
 tag_dir: tags
-archive_dir: archives
+archive_dir: i_dont_wanna_use_default_archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
@@ -92,8 +116,8 @@ relative_link: false
 future: true
 highlight:
   enable: true
-  line_number: false
-  auto_detect: false
+  line_number: true
+  auto_detect: true
   tab_replace:
 
 # Category & Tag
@@ -115,47 +139,12 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
-
-markdown:
-  plugins:
-    - markdown-it-abbr
-    - markdown-it-footnote
-    - markdown-it-ins
-    - markdown-it-sub
-    - markdown-it-sup
-    - markdown-it-emoji
-
 ## Themes: https://hexo.io/themes/
-theme: snippet
-# theme: Anisina
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/njueyupeng/njueyupeng.github.io.git
-  branch: 
-  message:
-
-
-# img CDN path
-cdn-url:  # 你的CDN地址
-
-# Qiniu imageView2 API
-# More info http://developer.qiniu.com/code/v6/api/kodo-api/image/imageview2.html
-clip-content: "?imageView2/1/w/1400/h/400/interlace/1/q/90"
-clip-avatar: "?imageView2/2/w/300/h/300/interlace/1/q/90"
-clip-home-post-bg: "?imageView2/1/w/800/h/300/interlace/1/q/70"
-
-# post default images
-post-default-img: #博文默认的图片
-post-default-img-mobile: #移动端显示的图片
-
-# search api , set your custom key
-swiftype_key: 
-
-
-# archive page title 
-archive:
-    title: archives
-    description: 可以根据归档日期检索所有文件
+#   type: git
+#   repo: https://github.com/Kaijun/hexo-theme-huxblog
+#   branch: gh-pages
