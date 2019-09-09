@@ -141,7 +141,7 @@ exturl: false
 #baidu_site_verification:
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO.
-baidu_push: false
+baidu_push: true
 
 # ---------------------------------------------------------------
 # Menu Settings
@@ -627,7 +627,7 @@ valine:
   notify: false # mail notifier, See: https://github.com/xCss/Valine/wiki
   verify: false # Verification code
   placeholder: 雁过留声，君过留言，评论一下吧！ # comment box placeholder
-  avatar: monsterid # gravatar style
+  avatar: robohash # monsterid # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
   language: # language, available values: en, zh-cn
