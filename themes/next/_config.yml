@@ -11,7 +11,7 @@ override: false
 
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
-  enable: true
+  enable: false
 
 # Redefine custom file paths. Introduced in NexT v6.0.2. If commented, will be used default custom file paths.
 # For example, you want to put your custom styles file outside theme directory in root `source/_data`, set `styles: source/_data/styles.styl`
@@ -155,10 +155,10 @@ baidu_push: false
 # External url should start with http:// or https://
 menu:
   home: / || home
-  about: /about/ || user
   tags: /tags/ || tags
   categories: /categories/ || th
   archives: /archives/ || archive
+  about: /about/ || user
   # schedule: /schedule/ || calendar
   # sitemap: /sitemap.xml || sitemap
   # commonweal: /404/ || heartbeat
