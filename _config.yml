@@ -49,7 +49,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 6b668b47c6b4627b27fc1e79bef13ed2
+ba_track_id: '6b668b47c6b4627b27fc1e79bef13ed2'
 # Google Analytics
 # ga_track_id: 'UA-49627206-1'            # Format: UA-xxxxxx-xx
 # ga_domain: huangxuan.me
