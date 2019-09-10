@@ -1,6 +1,6 @@
 ---
 layout: 'about'
-title: '关于我'
+title: '关于'
 date: 2016-04-21 04:48:33
 description: 'HI，看我博客的你，真好看！'
 header-img: 'img/about-bg.jpg'
