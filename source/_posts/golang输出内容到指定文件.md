@@ -14,8 +14,8 @@ categories:
 package main
 
 import (
+    "os"
 		"io/ioutil"
-		"os"
 		"strconv"
 )
 
