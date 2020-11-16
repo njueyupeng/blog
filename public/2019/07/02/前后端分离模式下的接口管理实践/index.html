@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简介：本文分析了前后端分离开发模式下，由于接口交互，导致的前后端不能同步开发的问题，以及提出了一种综合解决方案，优化接口交互流程，提高开发效率。">
+<meta name="keywords" content="前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端分离模式下的接口管理实践">
+<meta property="og:url" content="http://yoursite.com/2019/07/02/前后端分离模式下的接口管理实践/index.html">
+<meta property="og:site_name" content="How2JS.cn">
+<meta property="og:description" content="简介：本文分析了前后端分离开发模式下，由于接口交互，导致的前后端不能同步开发的问题，以及提出了一种综合解决方案，优化接口交互流程，提高开发效率。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.loli.net/2019/07/03/5d1c00231349218951.png">
+<meta property="og:updated_time" content="2020-11-16T11:33:44.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前后端分离模式下的接口管理实践">
+<meta name="twitter:description" content="简介：本文分析了前后端分离开发模式下，由于接口交互，导致的前后端不能同步开发的问题，以及提出了一种综合解决方案，优化接口交互流程，提高开发效率。">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/03/5d1c00231349218951.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/02/前后端分离模式下的接口管理实践/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>前后端分离模式下的接口管理实践 | How2JS.cn</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">How2JS.cn</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">于鹏的博客</h1>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/njueyupeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/前后端分离模式下的接口管理实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="于鹏">
+      <meta itemprop="description" content="Think more,code less!">
+      <meta itemprop="image" content="/img/icon.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="How2JS.cn">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">前后端分离模式下的接口管理实践
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-07-02 10:08:08" itemprop="dateCreated datePublished" datetime="2019-07-02T10:08:08+08:00">2019-07-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-11-16 19:33:44" itemprop="dateModified" datetime="2020-11-16T19:33:44+08:00">2020-11-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/前端/" itemprop="url" rel="index"><span itemprop="name">前端</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/07/02/前后端分离模式下的接口管理实践/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/02/前后端分离模式下的接口管理实践/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/07/02/前后端分离模式下的接口管理实践/" class="leancloud_visitors" data-flag-title="前后端分离模式下的接口管理实践">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>简介：本文分析了前后端分离开发模式下，由于接口交互，导致的前后端不能同步开发的问题，以及提出了一种综合解决方案，优化接口交互流程，提高开发效率。</p>
+</blockquote>
+<a id="more"></a>
+<p>目前，随着 MVVM 框架的广泛应用，前后端分离的开发模式越来越得到广大开发者的青睐。前后端分离开发，就是后端人员负责写后台业务逻辑，前端人员通过 webpack 等打包工具，开发前端页面，两者通过接口来交换数据。页面由前端根据接口数据来进行渲染，而不是通过后端来渲染。</p>
+<p>这种开发模式，可以使前后端并行开发，各司其职，既提高了项目总体的开发效率，也让不同的角色发挥自己的特长，前后端人员更专注于自己的职责，项目总体质量也能得到提高。</p>
+<h2 id="前后端通过接口交互，有哪些问题？"><a href="#前后端通过接口交互，有哪些问题？" class="headerlink" title="前后端通过接口交互，有哪些问题？"></a>前后端通过接口交互，有哪些问题？</h2><h3 id="问题-1：依赖后端接口，前端无法独立开发"><a href="#问题-1：依赖后端接口，前端无法独立开发" class="headerlink" title="问题 1：依赖后端接口，前端无法独立开发"></a><span style="color:#d35400">问题 1：依赖后端接口，前端无法独立开发</span></h3><p>分离后，前后端沟通的最重要一个环节是接口交互。假定有一个需求，开发一个显示用户信息的页面。在后端提供接口之前，前端是不知道后端的接口会返回什么格式的数据，不知道以哪个字段来获取需要的数据，因此，前端无法开发页面的逻辑，特别是现在的 MVVM 框架，由数据驱动页面，在没有数据的情况下，前端工作的进度会取决于后端提供接口的进度，违背了前后端分离开发的愿景。</p>
+<h3 id="问题-2：后端提供接口文档，前端需要写模拟数据"><a href="#问题-2：后端提供接口文档，前端需要写模拟数据" class="headerlink" title="问题 2：后端提供接口文档，前端需要写模拟数据"></a><span style="color:#d35400">问题 2：后端提供接口文档，前端需要写模拟数据</span></h3><p>在后端提供接口文档以后，假定文档定义获取用户信息的接口如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口路径： /getUserInfo</span></span><br><span class="line"><span class="comment">// 接口参数：</span></span><br><span class="line">&#123;</span><br><span class="line">  id: <span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回数据</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>:<span class="string">"张三"</span>,</span><br><span class="line">  <span class="string">"id"</span>:<span class="number">123</span>,</span><br><span class="line">  <span class="string">"role"</span>:<span class="string">"admin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>拿到上述文档后，由于此时后端还没有开发对应的接口，导致前端无法连接后端服务器，获取数据。这时候，前端为了写逻辑，由于接口无法调通，只能自己依据接口文档，构造模拟数据。等到联调阶段，还需要把构造的模拟数据删掉，这些构造的模拟数据，上线后是完全没用的，这就是一种工作量的浪费。</p>
+<h3 id="问题-3：后端做接口测试，需要依赖-postman-等测试工具"><a href="#问题-3：后端做接口测试，需要依赖-postman-等测试工具" class="headerlink" title="问题 3：后端做接口测试，需要依赖 postman 等测试工具"></a><span style="color:#d35400">问题 3：后端做接口测试，需要依赖 postman 等测试工具</span></h3><p>当后端开发，完成了一个接口后，需要对接口做接口测试。如果这时候页面还没有完成，后端只能依据接口文档，在 postman 上面构造模拟数据，然后通过 postman 调用自己的接口，查看返回的数据。通过对比返回的数据和接口文档定义的返回数据，知道自己的后端是否按照文档返回了数据。这个过程中，在 postman 上定义模拟数据是一种工作量，人眼对比数据，也是一种工作量，开发效率大大降低。</p>
+<h3 id="问题-4：接口是否已经完成，接口是否有问题，需要前后端频繁沟通"><a href="#问题-4：接口是否已经完成，接口是否有问题，需要前后端频繁沟通" class="headerlink" title="问题 4：接口是否已经完成，接口是否有问题，需要前后端频繁沟通"></a><span style="color:#d35400">问题 4：接口是否已经完成，接口是否有问题，需要前后端频繁沟通</span></h3><p>由于接口文档更新不及时，以及无法保证团队的每一个成员手上的接口文档都是最新版本，甚至是，实际开发过程中接口已经变化，但是没有更新文档，只是口头交流，都会导致团队成员开发或者沟通出错，导致返工的问题，甚至是引起团队矛盾：<strong>为什么接口变化了不通知我？</strong></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="接口管理平台的诞生"><a href="#接口管理平台的诞生" class="headerlink" title="接口管理平台的诞生"></a><span style="color:#d35400">接口管理平台的诞生</span></h3><p>为了解决接口文档不能够实时更新的问题，可以开发一个接口管理平台，在平台内定义每个接口的请求体和响应体等信息，当接口需要变更时，直接在平台上面更改。同时这个平台记录每个接口的变更日志，方便回滚和查看变更了哪些内容。</p>
+<p>如果企业内部有通讯工具，可以继承内部通讯工具，当接口被更改了之后，自动向团队成员发送通知，告知更改了哪些内容，这样，可以保证团队内所有文档都是最新的。</p>
+<p>同时，该平台需要支持导出接口文档的功能，因为很多团队需要电子文档做备份。不过，这只是一个无关紧要的功能。这个平台应该追求一个目标：可以在这换一个平台上，完成接口的所有生命周期的管理。</p>
+<h3 id="接口的生命周期管理"><a href="#接口的生命周期管理" class="headerlink" title="接口的生命周期管理"></a><span style="color:#d35400">接口的生命周期管理</span></h3><p>有了接口在线管理，就可以对接口进行生命周期管理，比如这个接口是已定义阶段，还是待联调阶段，还是已完成阶段，都可以标注出来。接口的状态一目了然。</p>
+<h3 id="接口的模拟响应和请求"><a href="#接口的模拟响应和请求" class="headerlink" title="接口的模拟响应和请求"></a><span style="color:#d35400">接口的模拟响应和请求</span></h3><p>这个平台拥有了接口的所有数据，就可以依照接口的定义，返回模拟数据。这样，将所有接口部署在这个平台上，生成一个模拟的 baseurl，前端工程将所有接口请求反向代理到这个地址，就可以获取到模拟数据，并进行相应逻辑的开发。此时，前端在不依赖后端的情况下，就可以完成开发工作。</p>
+<p>针对后端，如果需要测试自己的接口，可以在页面上点击测试按钮，由浏览器发送请求，平台显示响应的数据。同时，因为接口平台已经有了返回数据的定义，获取到实际接口数据后，接口管理平台可以进行结构对比，并给出提示，这样，后端同学就很容易知道自己的接口到底对不对了。</p>
+<h3 id="跨域问题的解决"><a href="#跨域问题的解决" class="headerlink" title="跨域问题的解决"></a><span style="color:#d35400">跨域问题的解决</span></h3><p>针对上文提出的接口模拟请求，是有一个问题的，当用户在接口管理平台上点击测试时，如果页面直接请求用户的服务器，会存在跨域问题。</p>
+<p>一种解决方案是，页面将请求数据发送给接口管理平台的后台服务器，由后台服务器代为发送请求，然后，将获取到的数据返回给页面，在用户感知上，是页面直接发送了请求。</p>
+<p>但是，虽然上述方案规避了跨域问题，但是没法获取到目标服务器的 cookie，导致依赖 cookie 的 web 程序，可能出现问题。</p>
+<p>这就引出了另外一种方案：chrome 插件。</p>
+<h3 id="chrome-插件的诞生"><a href="#chrome-插件的诞生" class="headerlink" title="chrome 插件的诞生"></a><span style="color:#d35400">chrome 插件的诞生</span></h3><p>上文提出，当用户在 A 系统页面上发送请求时，无法读取 B 系统里面的 Cookie，可能导致系统运行出错。</p>
+<p>有没有一种方案，可以获取到所有系统的 cookie 呢？答案是有的，就是使用 chrome 插件。</p>
+<p>chrome 插件是对浏览器功能的扩展，允许用户自己编写插件，对 chrome 功能进行扩充，同时，chrome 插件不存在跨域问题，它可以读取到任何页面的任何信息。对于 chrome 插件的开发，这里不做赘述。</p>
+<p>因此，我们可以开发一个 chrome 插件，当用户点击测试按钮是，由插件代为发送请求，插件获取到响应数据后，将数据返回给页面展示。</p>
+<p>至此，还剩下最后一个问题：接口联调。</p>
+<h3 id="接口联调"><a href="#接口联调" class="headerlink" title="接口联调"></a><span style="color:#d35400">接口联调</span></h3><p>当前后端开发完成以后，需要进行前后端联调，通常这时候，需要前端直连后端的服务器，或者前端将页面打包给后端进行部署，费时又费力，而且，这得建立在所有接口已经开发完的情况才能这样做，否则页面很容易就报接口错误。</p>
+<p>既然我们已经维护了接口状态，那么我们就可以在接口管理平台上做接口联调。</p>
+<p>比如，我们在接口管理平台上管理了接口 A，它的信息如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 接口路径： /getUserInfo</span></span><br><span class="line"><span class="comment">// 接口参数：</span></span><br><span class="line"><span class="comment">// 反向代理地址： http://xx.com（该地址为接口管理平台生成的地址）</span></span><br><span class="line"><span class="comment">// 后端服务器地址： http://back.com（该地址为后端同学的服务器地址）</span></span><br><span class="line">&#123;</span><br><span class="line">  id: <span class="number">123</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回数据</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>:<span class="string">"张三"</span>,</span><br><span class="line">  <span class="string">"id"</span>:<span class="number">123</span>,</span><br><span class="line">  <span class="string">"role"</span>:<span class="string">"admin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>工作流如下:</p>
+<ol>
+<li>前端工程反向代理到 <a href="http://xx.com" target="_blank" rel="noopener">http://xx.com</a></li>
+<li>前端请求接口： /getUserInfo,并发送数据{id:123}</li>
+<li>接口管理平台接到前端工程的请求，匹配到对应的接口，并查询接口状态</li>
+<li><p>如果接口状态为待开发阶段，则查询定义的模拟数据，并返回该数据。即，返回以下数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>:<span class="string">"张三"</span>,</span><br><span class="line">  <span class="string">"id"</span>:<span class="number">123</span>,</span><br><span class="line">  <span class="string">"role"</span>:<span class="string">"admin"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果接口状态为已完成阶段，则由接口管理平台转发该请求到<a href="http://back.com（后端同学的地址），接口管理平台获取到数据后，将数据返回给前端工程，包括请求头部等信息。" target="_blank" rel="noopener">http://back.com（后端同学的地址），接口管理平台获取到数据后，将数据返回给前端工程，包括请求头部等信息。</a></p>
+</li>
+</ol>
+<p>至此，整个流程已经走通。</p>
+<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><p>目前，多家公司推出了自己的接口管理工具，但是，每一家公司的产品或多或少有些不完善的地方，对此，我做了一些调研，供大家参考：<br><a href="https://i.loli.net/2019/07/03/5d1c00231349218951.png" target="_blank" rel="noopener"><img src="https://i.loli.net/2019/07/03/5d1c00231349218951.png" alt="竞品对比.png"></a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端/" rel="tag"># 前端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/23/什么是Cookie隔离/" rel="next" title="什么是 Cookie 隔离？">
+                <i class="fa fa-chevron-left"></i> 什么是 Cookie 隔离？
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/13/设计模式之单例模式/" rel="prev" title="设计模式之单例模式">
+                设计模式之单例模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/img/icon.gif" alt="于鹏">
+            
+              <p class="site-author-name" itemprop="name">于鹏</p>
+              <div class="site-description motion-element" itemprop="description">Think more,code less!</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/njueyupeng" title="GitHub &rarr; https://github.com/njueyupeng" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:1196194875@qq.com" title="E-Mail &rarr; mailto:1196194875@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前后端通过接口交互，有哪些问题？"><span class="nav-number">1.</span> <span class="nav-text">前后端通过接口交互，有哪些问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-1：依赖后端接口，前端无法独立开发"><span class="nav-number">1.1.</span> <span class="nav-text">问题 1：依赖后端接口，前端无法独立开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-2：后端提供接口文档，前端需要写模拟数据"><span class="nav-number">1.2.</span> <span class="nav-text">问题 2：后端提供接口文档，前端需要写模拟数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-3：后端做接口测试，需要依赖-postman-等测试工具"><span class="nav-number">1.3.</span> <span class="nav-text">问题 3：后端做接口测试，需要依赖 postman 等测试工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题-4：接口是否已经完成，接口是否有问题，需要前后端频繁沟通"><span class="nav-number">1.4.</span> <span class="nav-text">问题 4：接口是否已经完成，接口是否有问题，需要前后端频繁沟通</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口管理平台的诞生"><span class="nav-number">2.1.</span> <span class="nav-text">接口管理平台的诞生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的生命周期管理"><span class="nav-number">2.2.</span> <span class="nav-text">接口的生命周期管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的模拟响应和请求"><span class="nav-number">2.3.</span> <span class="nav-text">接口的模拟响应和请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域问题的解决"><span class="nav-number">2.4.</span> <span class="nav-text">跨域问题的解决</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#chrome-插件的诞生"><span class="nav-number">2.5.</span> <span class="nav-text">chrome 插件的诞生</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口联调"><span class="nav-number">2.6.</span> <span class="nav-text">接口联调</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现状"><span class="nav-number">3.</span> <span class="nav-text">现状</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">  <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">苏ICP备18000432号 </a>&copy; 2017 – <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">于鹏</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.0"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'sSTLR14UGdxsDkgqtSsuYAph-gzGzoHsz',
+    appKey: 'DNu29crmBynfoAcBgc07DlaW',
+    placeholder: '雁过留声，君过留言，评论一下吧！',
+    avatar: 'robohash',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?6b668b47c6b4627b27fc1e79bef13ed2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
