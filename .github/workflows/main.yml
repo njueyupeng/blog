@@ -1,0 +1,27 @@
+name: 自动化部署hexo博客
+on:
+  push:
+    branches:
+      - hexo
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2.3.2
+      - name: Clean
+        uses: heowc/action-hexo@main
+        with:
+          args: clean
+      - name: Generate
+        uses: heowc/action-hexo@main
+        with:
+          args: generate
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTPSERVER }}
+          username: ${{ secrets.FTPNAME }}
+          password: ${{ secrets.FTPPASSWORD }}
+          local-dir: ./public/
+          server-dir: ./
