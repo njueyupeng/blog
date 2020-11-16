@@ -1851,7 +1851,11 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
+<<<<<<< HEAD
   background: #281663;
+=======
+  background: #28cfe4;
+>>>>>>> publish
 }
 .feed-link,
 .chat {
