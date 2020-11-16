@@ -1,0 +1,26 @@
+name: Deploy website on push
+on:
+  push:
+    branches:
+      - hugo
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2.3.2
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2.2.2
+        with:
+          hugo-version: "0.74.3"
+          extended: true
+      - name: Build
+        run: hugo -D
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+        server: ${{ secrets.FTPSERVER }}
+        username: ${{ secrets.FTPNAME }}
+        password: ${{ secrets.FTPPASSWORD }}
+        local-dir: ./public/
+        server-dir: ./bio/
