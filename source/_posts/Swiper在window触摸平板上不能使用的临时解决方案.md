@@ -10,6 +10,7 @@ categories:
 ![bg2017022201.jpg](https://pic2.zhimg.com/v2-66349abb06b219dfd95560ce129fa3e6_1440w.jpg?source=172ae18b)
 
 最近在做华为大屏的应用适配，发现swiper在window的触摸设备上无法使用（touch事件处理有问题），查询原因，发现swiper源码对window触摸屏的判断有问题，从而导致swiper不支持window触摸设备操作。
+<!-- more -->
 
 解决方案如下：
 
