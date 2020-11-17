@@ -425,12 +425,24 @@
                 
               
 
-              <time title="创建时间：2020-11-16 19:58:22 / 修改时间：20:07:03" itemprop="dateCreated datePublished" datetime="2020-11-16T19:58:22+08:00">2020-11-16</time>
+              <time title="创建时间：2020-11-16 19:58:22" itemprop="dateCreated datePublished" datetime="2020-11-16T19:58:22+08:00">2020-11-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-11-17 11:50:30" itemprop="dateModified" datetime="2020-11-17T11:50:30+08:00">2020-11-17</time>
               
             
           </span>
@@ -507,17 +519,20 @@
 
       
         
+          <p><img src="https://pic2.zhimg.com/v2-66349abb06b219dfd95560ce129fa3e6_1440w.jpg?source=172ae18b" alt="bg2017022201.jpg"></p>
+<p>最近在做华为大屏的应用适配，发现swiper在window的触摸设备上无法使用（touch事件处理有问题），查询原因，发现swiper源码对window触摸屏的判断有问题，从而导致swiper不支持window触摸设备操作。<br>
+          <!--noindex-->
           
-            <p><img src="https://pic2.zhimg.com/v2-66349abb06b219dfd95560ce129fa3e6_1440w.jpg?source=172ae18b" alt="bg2017022201.jpg"></p>
-<p>最近在做华为大屏的应用适配，发现swiper在window的触摸设备上无法使用（touch事件处理有问题），查询原因，发现swiper源码对window触摸屏的判断有问题，从而导致swiper不支持window触摸设备操作。</p>
-<p>解决方案如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 检测设备是否支持触摸</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">touchCapable</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="string">'ontouchstart'</span> <span class="keyword">in</span> <span class="built_in">window</span>||</span><br><span class="line">      (<span class="built_in">window</span>.DocumentTouch &amp;&amp; <span class="built_in">document</span> <span class="keyword">instanceof</span> <span class="built_in">window</span>.DocumentTouch) ||</span><br><span class="line">      navigator.maxTouchPoints &gt; <span class="number">0</span> ||</span><br><span class="line">      <span class="built_in">window</span>.navigator.msMaxTouchPoints &gt; <span class="number">0</span></span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// new Swiper的配置项，增加simulate选项</span></span><br><span class="line">swiperConfig = &#123;</span><br><span class="line"> simulateTouch : !touchCapable()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果在window触摸屏幕上，滑动到边界触发了其他行为（如触发了浏览器的前进后退），可以添加一个css属性禁止此行为：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html, body &#123; overscroll-behavior: none; &#125;</span><br></pre></td></tr></table></figure>
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/11/16/Swiper在window触摸平板上不能使用的临时解决方案/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
