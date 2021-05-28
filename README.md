@@ -1,45 +1,33 @@
-# Hexo-Theme-Huxblog
+# Website
 
-> Ported Theme of [Hux Blog](https://github.com/Huxpro/huxpro.github.io), Thank [Huxpro](https://github.com/Huxpro) for designing such a flawless theme.
+This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
-### [Demo &rarr;](http://kaijun.github.io/hexo-theme-huxblog)
+## Installation
 
-
-![](http://huangxuan.me/img/blog-desktop.jpg)
-
-## Usage
-
-I didn't publish it as a single theme folder because a few of the pages are added and modified manually, so you should manually create some extra folders in `source` for the new pages and modify the `_config.yml` if you only have the single theme folder.
-
-So i just pushed the whole hexo project for your convenience, all pre settings and boilerplates are included, have a look and go ahead customizing your own blog!
-
-##### 1.Init
-
-```
-git clone https://github.com/Kaijun/hexo-theme-huxblog.git
-cd hexo-theme-huxblog
-npm install
+```console
+yarn install
 ```
 
-##### 2.Modify
-Modify `_config.yml` file with your own info.
-Especially the section:
+## Local Development
 
-```
-deploy:
-  type: git
-  repo: https://github.com/Kaijun/hexo-theme-huxblog
-  branch: gh-pages
-```
-Replace with your own repo!
-
-##### 3.Writting/Serve/Deploy
-
-```
-hexo new post IMAPOST
-hexo serve // run hexo in local environment
-hexo clean && hexo deploy // hexo will push the static files automatically into the specific branch(gh-pages) of your repo!
+```console
+yarn start
 ```
 
-##### 4.Enjoy! 
-Please [**Star**](https://github.com/kaijun/hexo-theme-huxblog/stargazers) this Project if you like it! [**Following**](https://github.com/Kaijun) would also be appreciated!
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+## Build
+
+```console
+yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+## Deployment
+
+```console
+GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
