@@ -2,13 +2,13 @@
 module.exports = {
   title: '于先生',
   tagline: '小于是一个喜欢学习的程序员，在这里与你分享我觉得值得分享的事情！',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'http://how2js.cn',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  projectName: 'how2js.cn', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: '于先生',
@@ -25,7 +25,7 @@ module.exports = {
         },
         {to: '/blog', label: '博客', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/njueyupeng',
           label: 'GitHub',
           position: 'right',
         },
@@ -44,7 +44,7 @@ module.exports = {
           ],
         },
         {
-          title: 'Community',
+          title: '社区',
           items: [
             {
               label: 'Stack Overflow',
@@ -61,7 +61,7 @@ module.exports = {
           ],
         },
         {
-          title: 'More',
+          title: '联系我',
           items: [
             {
               label: 'Blog',
@@ -69,12 +69,12 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/njueyupeng',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} , Inc. Built with Docusaurus.`,
     },
   },
   presets: [
