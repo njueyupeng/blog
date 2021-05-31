@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://your-docusaurus-test-site.com/blog</id>
+    <title>于先生 Blog</title>
+    <updated>2019-11-22T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://your-docusaurus-test-site.com/blog"/>
+    <subtitle>于先生 Blog</subtitle>
+    <icon>https://your-docusaurus-test-site.com/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[弹跳加载动画]]></title>
+        <id>loadingAnimation</id>
+        <link href="https://your-docusaurus-test-site.com/blog/loadingAnimation"/>
+        <updated>2019-11-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[创建反复加载程序动画：]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Truncation Example]]></title>
+        <id>Truncation Example</id>
+        <link href="https://your-docusaurus-test-site.com/blog/2019/11/22/graph"/>
+        <updated>2019-11-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[All these will be part of the blog post summary.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[v-if和v-show的区别]]></title>
+        <id>vif</id>
+        <link href="https://your-docusaurus-test-site.com/blog/vif"/>
+        <updated>2019-08-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[v-if 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Welcome]]></title>
+        <id>welcome</id>
+        <link href="https://your-docusaurus-test-site.com/blog/welcome"/>
+        <updated>2019-05-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello]]></title>
+        <id>hello-world</id>
+        <link href="https://your-docusaurus-test-site.com/blog/hello-world"/>
+        <updated>2019-05-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Welcome to this blog. This blog is created with Docusaurus 2 alpha.]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hola]]></title>
+        <id>hola</id>
+        <link href="https://your-docusaurus-test-site.com/blog/hola"/>
+        <updated>2019-05-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></summary>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[利用CSS实现分页打印]]></title>
+        <id>cssprint</id>
+        <link href="https://your-docusaurus-test-site.com/blog/cssprint"/>
+        <updated>2018-09-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[最近碰到一个需求，需要前端将在一个页面内调用浏览器的 window.print()方法，打印当前页面。但是呢，需要将三个 DIV 分页打印：]]></summary>
+    </entry>
+</feed>

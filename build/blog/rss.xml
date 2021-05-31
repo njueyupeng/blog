@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>于先生 Blog</title>
+        <link>https://your-docusaurus-test-site.com/blog</link>
+        <description>于先生 Blog</description>
+        <lastBuildDate>Fri, 22 Nov 2019 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[弹跳加载动画]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/loadingAnimation</link>
+            <guid>loadingAnimation</guid>
+            <pubDate>Fri, 22 Nov 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[创建反复加载程序动画：]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Truncation Example]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/2019/11/22/graph</link>
+            <guid>Truncation Example</guid>
+            <pubDate>Fri, 22 Nov 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[All these will be part of the blog post summary.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[v-if和v-show的区别]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/vif</link>
+            <guid>vif</guid>
+            <pubDate>Mon, 12 Aug 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[v-if 是“真正”的条件渲染，因为它会确保在切换过程中条件块内的事件监听器和子组件适当地被销毁和重建。]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Welcome]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/welcome</link>
+            <guid>welcome</guid>
+            <pubDate>Thu, 30 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Blog features are powered by the blog plugin. Simply add files to the blog directory. It supports tags as well!]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hello]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/hello-world</link>
+            <guid>hello-world</guid>
+            <pubDate>Wed, 29 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Welcome to this blog. This blog is created with Docusaurus 2 alpha.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Hola]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/hola</link>
+            <guid>hola</guid>
+            <pubDate>Tue, 28 May 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet]]></description>
+        </item>
+        <item>
+            <title><![CDATA[利用CSS实现分页打印]]></title>
+            <link>https://your-docusaurus-test-site.com/blog/cssprint</link>
+            <guid>cssprint</guid>
+            <pubDate>Sun, 16 Sep 2018 00:00:00 GMT</pubDate>
+            <description><![CDATA[最近碰到一个需求，需要前端将在一个页面内调用浏览器的 window.print()方法，打印当前页面。但是呢，需要将三个 DIV 分页打印：]]></description>
+        </item>
+    </channel>
+</rss>
