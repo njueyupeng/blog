@@ -84,15 +84,15 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
+          editCurrentVersion: false,
           editUrl:
-          'http://how2js.cn/',
+          'https://github.com/njueyupeng/blog/edit/master/',
         },
         blog: {
           showReadingTime: true,
           blogTitle: '于鹏的博客',
           blogDescription: '于鹏的博客',
           // Please change this to your repo.
-          editUrl:'http://how2js.cn/',
           blogSidebarCount:10,
           blogSidebarTitle: '最新文章',
         },
