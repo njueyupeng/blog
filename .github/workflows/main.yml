@@ -1,0 +1,19 @@
+name: 自动化部署DOCUS博客
+on:
+  push:
+    branches:
+      - mater
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2.3.2
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTPSERVER }}
+          username: ${{ secrets.FTPNAME }}
+          password: ${{ secrets.FTPPASSWORD }}
+          local-dir: ./build/
+          server-dir: ./
