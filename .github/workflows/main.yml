@@ -2,7 +2,7 @@ name: 自动化部署DOCUS博客
 on:
   push:
     branches:
-      - mater
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
