@@ -2,7 +2,7 @@ name: 自动化部署hexo博客
 on:
   push:
     branches:
-      - hexo
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,5 +15,5 @@ jobs:
           server: ${{ secrets.FTPSERVER }}
           username: ${{ secrets.FTPNAME }}
           password: ${{ secrets.FTPPASSWORD }}
-          local-dir: ./public/
+          local-dir: ./build/
           server-dir: ./
