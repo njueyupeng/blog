@@ -10,20 +10,30 @@ module.exports = {
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'how2js.cn', // Usually your repo name.
   themeConfig: {
+    // announcementBar: {
+    //   id: 'tip', // 用于标记此消息的任何值。
+    //   content:
+    //     '网站正在建设中，欢迎访问！',
+    //   backgroundColor: '#fafbfc', // 默认为 `#fff`。
+    //   textColor: '#091E42', // 默认为 `#000`。
+    //   isCloseable: true, // 默认为 `true`。
+    // },
     navbar: {
-      title: '于先生',
+      title: '于鹏的个人网站',
       logo: {
         alt: 'My Site Logo',
         src: 'img/logo.svg',
       },
+      // style: 'primary', // primary dark
+      hideOnScroll: false,
       items: [
         {
           type: 'doc',
           docId: 'intro',
-          position: 'left',
+          position: 'right',
           label: '笔记',
         },
-        {to: '/blog', label: '博客', position: 'left'},
+        {to: '/blog', label: '博客', position: 'right'},
         {
           href: 'https://github.com/njueyupeng',
           label: 'GitHub',
@@ -82,8 +92,10 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          routeBasePath: '/', // Set this value to '/'.
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
+          showLastUpdateTime: true,
           editCurrentVersion: false,
           editUrl:
           'https://github.com/njueyupeng/blog/edit/master/',
