@@ -95,7 +95,7 @@ module.exports = {
           routeBasePath: '/', // Set this value to '/'.
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          showLastUpdateTime: true,
+          showLastUpdateTime: false,
           editCurrentVersion: false,
           editUrl:
           'https://github.com/njueyupeng/blog/edit/master/',
