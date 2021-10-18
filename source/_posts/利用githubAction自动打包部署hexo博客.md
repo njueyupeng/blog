@@ -1,3 +1,11 @@
+---
+title: 利用githubAction自动打包部署hexo博客
+date: 2021-10-18 13:35:21
+tags:
+categories:
+---
+
+```bash
 name: 自动化部署hexo博客
 on:
   push:
@@ -35,4 +43,4 @@ jobs:
           local-dir: ./public/
           server-dir: ./
           
-          
+```
