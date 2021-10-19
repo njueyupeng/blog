@@ -6,7 +6,7 @@ categories:
   - 工具
 ---
 
-# Rollup
+
 
 ## 介绍
 
@@ -24,7 +24,7 @@ For browsers:
 # compile to a <script> containing a self-executing function ('iife')
 rollup main.js --file bundle.js --format iife
 ```
-
+<!--more-->
 For Node.js:
 
 ```bash
