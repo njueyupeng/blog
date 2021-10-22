@@ -3,16 +3,16 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: How2JS.cn
-subtitle: 于鹏的博客
+title: 于鹏的博客
+subtitle: 
 author: 于鹏
-description: Think more,code less!
+description: 撸起袖子加油干🚀！
 language: zh-CN
 timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-# url: http://kaijun.rocks/hexo-theme-huxblog
+url: http://how2js.cn
 # root: /yupeng-blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -20,10 +20,10 @@ permalink_defaults:
 #Custom Setting Start
 
 # Site settings
-SEOTitle: 于鹏的博客_前端博客_前端技术博客_优秀前端博客
+SEOTitle: 于鹏的博客_前端博客_前端技术博客
 header-img: img/home-bg.jpg
 email: 1196194875@qq.com
-keyword: 于鹏_前端_技术成长_前端技术博客_程序员博客_优秀前端博客
+keyword: 于鹏_前端_技术成长_前端技术博客_程序员博客
 
 # SNS settings
 # RSS: false
