@@ -1,7 +1,8 @@
 ---
 title: Rollup官网文档阅读总结
 date: 2021-10-18 20:05:19
-tags: rollup
+tags: 
+  - rollup
 categories:
   - 工具
 ---
