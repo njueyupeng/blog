@@ -209,7 +209,7 @@ makeRequest()
   ```
 This is not a huge plus when you’re developing on your local environment and have the file open in an editor, but it’s quite useful when you’re trying to make sense of error logs coming from your production server. In such cases, knowing the error happened in makeRequest is better than knowing that the error came from a then after a then after a then …
 
-Debugging
+### 调试
 A killer advantage when using async/await is that it’s much easier to debug. Debugging promises has always been such a pain for 2 reasons
 
 You can’t set breakpoints in arrow functions that return expressions (no body).
@@ -222,8 +222,9 @@ With async/await you don’t need arrow functions as much, and you can step thro
 
 snippet with consecutive awaits
 
-You can await anything
-Last but not least, await can be used for both synchronous and asynchronous expressions. For example, you can write await 5, which is equivalent to Promise.resolve(5). This might not seem very useful at first, but it's actually a great advantage when writing a library or a utility function where you don't know whether the input will be sync or async.
+### 7.你可以 await 所有
+
+await既可以用在异步表达式中，也可以用在同步表达式中。例如，你可以编写  **await 5**，它等效于**Promise.resolve(5)**。乍一看，这似乎没有什么用。但是在编写库文件或者通用函数时，如果你不知道外部的输入是同步的还是异步的，这将是一个很大的优势。
 
 Imagine you want to record the time taken to execute some API calls in your application, and you decide to create a generic function for this purpose. Here's how it would look with promises
 const recordTime = (makeRequest) => {
